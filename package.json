@@ -1,0 +1,26 @@
+{
+  "name": "ace-vue2",
+  "version": "0.0.1",
+  "description": "ace editor for vue2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pandapm/ace-vue2.git"
+  },
+  "keywords": [
+    "ace",
+    "vue2"
+  ],
+  "author": "PM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pandapm/ace-vue2/issues"
+  },
+  "homepage": "https://github.com/Pandapm/ace-vue2#readme",
+  "dependencies": {
+    "brace": "^0.10.0"
+  }
+}
