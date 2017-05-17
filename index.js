@@ -25,7 +25,14 @@ module.exports = {
             type: Boolean,
             default: false
         },
-        options: Object,
+        options:  {
+            type: Object,
+            default: function () {return {}}
+        },
+        code: String,
+        readOnly: {
+            type: Boolean,
+            default: false
     },
 
     data: function () {
@@ -36,31 +43,38 @@ module.exports = {
 
     mounted: function () {
         var vm = this;
-        var lang = vm.lang;
-        var theme = vm.theme;
-        var editor = vm.editor = ace.edit(vm.$el);
-        var options = vm.options;
+        var lang = this.lang;
+        var theme = this.theme;
+        var editor = this.editor = ace.edit(vm.$el);
+        var options = this.options;
         editor.$blockScrolling = Infinity;
         editor.getSession().setMode('ace/mode/' + lang);
         editor.setTheme('ace/theme/' + theme);
-        editor.setValue(vm.content, 1);
+        editor.setValue(this.content, 1);
         editor.setOptions(options);
+        editor.setHighlightActiveLine(true);
+        editor.setReadOnly(this.readOnly);
         editor.on('change', function () {
-          vm.$emit('editor-update', editor.getValue());
+          vm.$emit('contentChange', editor.getValue());
         });
     },
 
     watch: {
-        content: function (newContent) {
-            var vm = this;
-            if (vm.sync) {
-                vm.editor.setValue(newContent, 1);
+        'content': function (newContent) {
+            if (this.sync) {
+                this.editor.setValue(newContent, 1);
             }
         },
-
+        'lang' : function () {
+            this.editor.getSession().setMode('ace/mode/' + this.lang);
+        },
         theme: function (newTheme) {
-            var vm = this;
-            vm.editor.setTheme('ace/theme/' + newTheme);
+            this.editor.setTheme('ace/theme/' + newTheme);
+        }
+    },
+    methods: {
+        getValue() {
+            return this.editor.getValue()
         }
     }
 };
