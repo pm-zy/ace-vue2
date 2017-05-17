@@ -2,13 +2,16 @@ var ace = require('brace');
 
 module.exports = {
     template: '<div :style="{height: height, width: width}"></div>',
-
     props: {
         content: {
             type: String,
+            default: '',
             required: true
         },
-        lang: String,
+        lang: {
+            type: String,
+            default: 'javascript'
+        }
         theme: {
             type: String,
             default: 'chrome'
@@ -33,6 +36,7 @@ module.exports = {
         readOnly: {
             type: Boolean,
             default: false
+        }
     },
 
     data: function () {
@@ -50,7 +54,7 @@ module.exports = {
         editor.$blockScrolling = Infinity;
         editor.getSession().setMode('ace/mode/' + lang);
         editor.setTheme('ace/theme/' + theme);
-        editor.setValue(this.content, 1);
+        editor.setValue(vm.content, 1);
         editor.setOptions(options);
         editor.setHighlightActiveLine(true);
         editor.setReadOnly(this.readOnly);

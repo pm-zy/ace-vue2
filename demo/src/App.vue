@@ -4,7 +4,7 @@
         <h2>Ace Editor</h2>
         <input type="radio" name="lang" v-model="lang" value="javascript" />javasript
         <input type="radio" name="lang" v-model="lang" value="sql" />sql
-        <editor height="200px" :content="content" :code="code" :lang="lang"> </editor>
+        <editor :content="content" > </editor>
         <div class="btn" @click="getValue">
             显示代码
         </div>
