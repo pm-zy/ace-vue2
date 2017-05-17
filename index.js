@@ -11,7 +11,7 @@ module.exports = {
         lang: {
             type: String,
             default: 'javascript'
-        }
+        },
         theme: {
             type: String,
             default: 'chrome'
