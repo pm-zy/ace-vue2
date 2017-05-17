@@ -1,6 +1,6 @@
 {
   "name": "ace-vue2",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "ace editor for vue2.0",
   "main": "index.js",
   "scripts": {
