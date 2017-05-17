@@ -1,9 +1,11 @@
 # ace-vue2
+[![NPM version](https://img.shields.io/badge/npm-3.10.9-blue.svg)](https://www.npmjs.com/package/ace-vue2)
+
 
 A ace package for Vue2 , and based on brace.
 
 Developing.
-
+ 
 ## Install
 
 ```sh
