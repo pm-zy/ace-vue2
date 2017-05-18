@@ -3,8 +3,8 @@
         <img src="./assets/logo.png">
         <h2>Ace Editor</h2>
         <input type="radio" name="lang" v-model="lang" value="javascript" />javasript
-        <input type="radio" name="lang" v-model="lang" value="sql" />sql
-        <editor :content="content" > </editor>
+        <!-- <input type="radio" name="lang" v-model="lang" value="sql" />sql -->
+        <editor :content="content" v-on:change="change" v-on:copy="copy" v-on:paste="paste"> </editor>
         <div class="btn" @click="getValue">
             显示代码
         </div>
@@ -30,12 +30,9 @@ export default {
             code:　""
         }
     },
-    methods: {
-
-    },
     watch: {
         'lang': function() {
-            console.log(this.lang);
+            // console.log(this.lang);
         }
     },
     mounted() {
@@ -43,9 +40,16 @@ export default {
     },
     methods: {
         getValue() {
-            console.log('fsdfs');
             this.code = this.$children[0].getValue();
-            console.log(this.code);
+        },
+        change(content) {
+            console.log(content);
+        },
+        copy(str) {
+            console.log(str);
+        },
+        paste() {
+            console.log('paste');
         }
     }
 }

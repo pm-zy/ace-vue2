@@ -5,8 +5,7 @@ module.exports = {
     props: {
         content: {
             type: String,
-            default: '',
-            required: true
+            default: ''
         },
         lang: {
             type: String,
@@ -32,7 +31,6 @@ module.exports = {
             type: Object,
             default: function () {return {}}
         },
-        code: String,
         readOnly: {
             type: Boolean,
             default: false
@@ -41,7 +39,6 @@ module.exports = {
 
     data: function () {
         return {
-            editor: null,
         };
     },
 
@@ -58,9 +55,15 @@ module.exports = {
         editor.setOptions(options);
         editor.setHighlightActiveLine(true);
         editor.setReadOnly(this.readOnly);
-        editor.on('change', function () {
-          vm.$emit('contentChange', editor.getValue());
+        editor.on('change', function() {
+          vm.$emit('change', editor.getValue());
         });
+        editor.on('copy', function(str) {
+            vm.$emit('copy', str);
+        });
+        editor.on('paste', function() {
+            vm.$emit('paste');
+        })
     },
 
     watch: {

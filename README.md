@@ -5,7 +5,7 @@
 A ace package for Vue2 , and based on brace.
 
 Developing.
- 
+
 ## Install
 
 ```sh
@@ -36,7 +36,7 @@ export default {
     ...
 }
 ```
-### Import the editor's mode & theme module from `brace` before `export` 
+### Import the editor's mode & theme module from `brace` before `export`
 ```js
 import 'brace/mode/javascript'
 import 'brace/theme/chrome'
@@ -47,10 +47,11 @@ import 'brace/theme/chrome'
 ```
 `content` is a `String` and it is required.
 ### Get the codes which are written in the editor.
+See `Events` part.
 
 To get the value, you can use `getValue()` method in your vue scripts. `getValue()` is a method of the editor componnent, and it returns the content of the editor. So, use it as following:
 
-```js 
+```js
 let code = this.$children[0].getValue();
 ```
 
@@ -58,7 +59,7 @@ let code = this.$children[0].getValue();
 
 | props | type | defalut | required|
 |---------- | -------| --------------| ----------|
-| content | String | "" | required|
+| content | String | "" | |
 | lang | String | javascript | |
 | theme | String | chrome | |
 | height | String | 400px | |
@@ -67,10 +68,59 @@ let code = this.$children[0].getValue();
 | readOnly | Boolean | false | |
 | options | Object | {} | |
 
- #### Watched Props: 
- `theme`
- `lang` 
- `content`
+## Events
+### `change`
+`parameter`: `type String`
+
+ Emitted whenever the document is changed. Use `v-on:change` in `template` as following:
+
+```html
+<editor v-on:change="change"> </editor>
+```
+And the event handler in parent component as following:
+
+```js
+methods: {
+    change: function(doc) {
+        console.log(doc);
+    }
+}
+```
+
+### `copy`
+`parameter`: `type String`
+
+ Emitted when text is copied.
+
+ ```html
+ <editor v-on:copy="copy"> </editor>
+ ```
+ And the event handler in parent component as following:
+
+ ```js
+ methods: {
+     copy: function(str) {
+         console.log(str);
+     }
+ }
+ ```
+
+### `paste`
+no parameters.
+Emitted when text is pasted.
+
+```html
+<editor v-on:paste="paste"> </editor>
+```
+And the event handler in parent component as following:
+
+```js
+methods: {
+    paste: function() {
+        console.log('paste');
+    }
+}
+```
 
 ## Methods
 
