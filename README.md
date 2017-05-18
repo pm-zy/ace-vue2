@@ -12,8 +12,6 @@ Developing.
 $ npm install ace-vue2
 ```
 
-Ace-vue2 depends on [Node.js](http://nodejs.org/) and [npm](http://npmjs.org/) .
-
 ## Usage
 
 ### Import it before `export` in `<script>` and register the editor in `components` options.
@@ -46,6 +44,7 @@ import 'brace/theme/chrome'
 <editor height="200px" :content="content" > </editor>
 ```
 `content` is a `String` and it is required.
+
 ### Get the codes which are written in the editor.
 See `Events` part.
 
