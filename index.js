@@ -27,9 +27,9 @@ module.exports = {
             type: Boolean,
             default: false
         },
-        options:  {
+        options: {
             type: Object,
-            default: function () {return {}}
+            default: function () { return {} }
         },
         readOnly: {
             type: Boolean,
@@ -55,13 +55,13 @@ module.exports = {
         editor.setOptions(options);
         editor.setHighlightActiveLine(true);
         editor.setReadOnly(this.readOnly);
-        editor.on('change', function() {
-          vm.$emit('change', editor.getValue());
+        editor.on('change', function () {
+            vm.$emit('change', editor.getValue());
         });
-        editor.on('copy', function(str) {
+        editor.on('copy', function (str) {
             vm.$emit('copy', str);
         });
-        editor.on('paste', function() {
+        editor.on('paste', function () {
             vm.$emit('paste');
         })
     },
@@ -72,7 +72,7 @@ module.exports = {
                 this.editor.setValue(newContent, 1);
             }
         },
-        'lang' : function () {
+        'lang': function () {
             this.editor.getSession().setMode('ace/mode/' + this.lang);
         },
         theme: function (newTheme) {
