@@ -80,7 +80,7 @@ module.exports = {
         }
     },
     methods: {
-        getValue() {
+        getValue: function() {
             return this.editor.getValue()
         }
     }
